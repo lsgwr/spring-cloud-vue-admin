@@ -2,6 +2,7 @@
 [考试星](https://www.kaoshixing.com) 的SpringCloud实现，业余搞着玩地
 
 ## 目录说明
++ design: 项目的设计资源，包括前端原型、数据库模型和需求分析文档
 + backend:后端实现，采用SpringCloud实现，其中SpringBoot版本是1.5.3，SpringCloud版本是Dalston.RELEASE
 + frontend:前端实现，采用了前后端分离的方式进行地开发，所以前端可以单独部署
   + admin: 管理界面，采用Vue+iVew实现，可以管理人员、试题和考试

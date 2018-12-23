@@ -49,10 +49,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title(" user-service api ")
-                .description("user-service 微服务")
+                .title(" user api ")
+                .description("用户注册、登录、查询接口")
                 .termsOfServiceUrl("")
-                .contact("forezp")
                 .version("1.0")
                 .build();
     }

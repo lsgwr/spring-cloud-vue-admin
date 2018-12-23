@@ -1,0 +1,41 @@
+server:
+  port: 8762
+spring:
+  application:
+    name: user-service
+  zipkin:
+    base-url: http://localhost:9411
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sys-user?useSSL=false
+    username: root
+    password: Huawei@123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirms: true
+    virtual-host: /
+
+# service registry
+eureka:
+  instance:
+    ip-address: 127.0.0.1
+    port: 8761
+    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
+    instance-id: ${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.ip-address}:${eureka.instance.port}/eureka/
+
+management:
+  security:
+    enabled: false
+
+foo: foo version 1

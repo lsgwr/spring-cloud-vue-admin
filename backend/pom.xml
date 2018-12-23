@@ -11,6 +11,8 @@
         <module>eureka-server</module>
         <module>api-gateway</module>
         <module>monitor-service</module>
+        <module>uaa-service</module>
+        <module>user-service</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

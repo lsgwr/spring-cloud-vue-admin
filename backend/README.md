@@ -1,11 +1,19 @@
 # 项目预准备
 
 ## 1.启动zipkin服务
-> docker run -d -p 9411:9411 openzipkin/zipkin
+```
+ docker run -d -p 9411:9411 openzipkin/zipkin
+```
 
 
 ## 2.启动rabbitmq服务
 >docker run -d --hostname my-rabbit --name rabbit -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -p 15672:15672 -p 5672:5672 -p 25672:25672 -p 61613:61613 -p 1883:1883 rabbitmq:management
+
+简化命令是：
+
+```
+docker run -d -p 5672:5672 -p 15672:15672 rabbitmq:management
+```
 
 15672：控制台端口号
 

@@ -4,8 +4,9 @@ server:
 turbine:
   aggregator:
     clusterConfig: default
-  # services to monitor
-  appConfig: user-service , blog-service
+  # services to monitor,separate by ,
+  # appConfig: user-service , blog-service
+  appConfig: user-service
   clusterNameExpression: new String("default")
 
 management:

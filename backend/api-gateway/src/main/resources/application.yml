@@ -28,7 +28,7 @@ zuul:
       serviceId: user-service
       # 处理HTTP请求头Cookie为空的问题
       sensitive-headers:
-    blog-service:
+    exam-service:
       path: /blogapi/**
       serviceId: blog-service
       # 处理HTTP请求头Cookie为空的问题

@@ -10,6 +10,7 @@
     <modules>
         <module>admin-service</module>
         <module>api-gateway</module>
+        <module>common</module>
         <module>eureka-server</module>
         <module>exam-service</module>
         <module>monitor-service</module>

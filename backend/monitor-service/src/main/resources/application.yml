@@ -5,8 +5,8 @@ turbine:
   aggregator:
     clusterConfig: default
   # services to monitor,separate by ,
-  # appConfig: user-service , blog-service
-  appConfig: user-service
+    appConfig: user-service , exam-service
+  # appConfig: user-service
   clusterNameExpression: new String("default")
 
 management:

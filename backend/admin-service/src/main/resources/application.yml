@@ -1,0 +1,45 @@
+server:
+  port: 9998
+
+security:
+  user:
+    name: admin
+    password: 123456
+
+management:
+  security:
+    enabled: false
+
+spring:
+  application:
+    name: admin-service
+  boot:
+    admin:
+      routes:
+        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream,activiti
+      turbine:
+        clusters: default
+        location: monitor-service
+
+
+eureka:
+  instance:
+    metadata-map:
+      user.name: admin
+      user.password: 123456
+    ip-address: 127.0.0.1
+    port: 8761
+    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}
+    instance-id: ${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    client:
+      serviceUrl:
+        defaultZone: http://${eureka.instance.ip-address}:${eureka.instance.port}/eureka/
+
+logging:
+  file: "logs/admin-service.log"
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+server:
+  port: 8766
+
+turbine:
+  aggregator:
+    clusterConfig: default
+  # services to monitor
+  appConfig: user-service , blog-service
+  clusterNameExpression: new String("default")
+
+management:
+  security:
+    enabled: false
+
+security:
+  basic:
+    enabled: false
+
+# service registry
+eureka:
+  instance:
+    ip-address: 127.0.0.1
+    port: 8761
+    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}
+    instance-id: ${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.ip-address}:${eureka.instance.port}/eureka/
+
+spring:
+  application:
+    name: monitor-service

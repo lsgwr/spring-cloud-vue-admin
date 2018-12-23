@@ -1,0 +1,52 @@
+# service registry
+eureka:
+  instance:
+    ip-address: 127.0.0.1
+    port: 8761
+    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}
+    instance-id: ${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.ip-address}:${eureka.instance.port}/eureka/
+
+server:
+  port: 5000
+
+spring:
+  application:
+    name: api-gateway
+
+zuul:
+  host:
+    # Zuul的连接超时时间
+    connect-timeout-millis: 20000
+    # socket的连接超时时间
+    socket-timeout-millis: 20000
+  routes:
+    user-service:
+      path: /userapi/**
+      serviceId: user-service
+      # 处理HTTP请求头Cookie为空的问题
+      sensitive-headers:
+    blog-service:
+      path: /blogapi/**
+      serviceId: blog-service
+      # 处理HTTP请求头Cookie为空的问题
+      sensitive-headers:
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+
+management:
+  security:
+    enabled: false

@@ -26,7 +26,7 @@ public class Question {
     @GeneratedValue
     private Long id;
     /**
-     * 选项
+     * 题干
      */
     private String desc;
     /**
@@ -41,6 +41,14 @@ public class Question {
      * 题目的分析
      */
     private String analysis;
+    /**
+     * 试题难度：简单(low)、中等(middle)、复杂(high)
+     */
+    private String difficulty;
+    /**
+     * 用户的id,这里指创建人
+     */
+    private Long userId;
     /**
      * 创建时间
      */

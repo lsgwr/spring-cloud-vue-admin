@@ -26,6 +26,18 @@ public class Paper {
     @GeneratedValue
     private Long id;
     /**
+     * 考试表的主键
+     */
+    private Long examId;
+    /**
+     * 试题表的主键
+     */
+    private Long questionId;
+    /**
+     * 单道题目的分数
+     */
+    private Integer score;
+    /**
      * 创建时间
      */
     @Temporal(TemporalType.TIMESTAMP)

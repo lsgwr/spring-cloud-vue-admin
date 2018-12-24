@@ -46,7 +46,7 @@ public class Exam {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endTime;
     /**
-     * 考试时间限制
+     * 考试时间限制,分钟
      */
     private Integer timeLimit;
     /**

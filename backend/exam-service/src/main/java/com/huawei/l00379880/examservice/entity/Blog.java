@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created by fangzhipeng on 2017/7/10.
+ * Created by liangshanguang at 2018-12-24 08:07
  */
 
 @Entity

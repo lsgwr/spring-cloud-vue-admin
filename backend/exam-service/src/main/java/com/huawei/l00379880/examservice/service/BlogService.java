@@ -5,7 +5,7 @@ import com.huawei.l00379880.common.dto.RespDTO;
 import com.huawei.l00379880.common.exception.CommonException;
 import com.huawei.l00379880.common.exception.ErrorCode;
 import com.huawei.l00379880.examservice.client.UserServiceClient;
-import com.huawei.l00379880.examservice.dao.BlogDao;
+import com.huawei.l00379880.examservice.dao.BlogRepository;
 import com.huawei.l00379880.examservice.dto.BlogDetailDTO;
 import com.huawei.l00379880.examservice.entity.Blog;
 import com.huawei.l00379880.examservice.entity.User;
@@ -22,22 +22,22 @@ import java.util.List;
 public class BlogService {
 
     @Autowired
-    BlogDao blogDao;
+    BlogRepository blogRepository;
 
     @Autowired
     UserServiceClient userServiceClient;
 
     public Blog postBlog(Blog blog) {
-        return blogDao.save(blog);
+        return blogRepository.save(blog);
     }
 
     public List<Blog> findBlogs(String username) {
-        return blogDao.findByUsername(username);
+        return blogRepository.findByUsername(username);
     }
 
 
     public BlogDetailDTO findBlogDetail(Long id) {
-        Blog blog = blogDao.findOne(id);
+        Blog blog = blogRepository.findOne(id);
         if (null == blog) {
             throw new CommonException(ErrorCode.BLOG_IS_NOT_EXIST);
         }

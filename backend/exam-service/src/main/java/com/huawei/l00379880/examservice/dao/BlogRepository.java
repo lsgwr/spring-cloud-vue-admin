@@ -9,7 +9,7 @@ import java.util.List;
  * Created by liangshanguang at 2018-12-23 21：29
  */
 
-public interface BlogDao extends JpaRepository<Blog, Long> {
+public interface BlogRepository extends JpaRepository<Blog, Long> {
 
     List<Blog> findByUsername(String username);
 

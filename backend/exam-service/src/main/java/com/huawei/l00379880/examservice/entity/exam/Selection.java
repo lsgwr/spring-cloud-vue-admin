@@ -18,7 +18,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Option {
+public class Selection {
     /**
      * 数据库主键
      */
@@ -29,7 +29,7 @@ public class Option {
     /**
      * 选项
      */
-    private String desc;
+    private String description;
     /**
      * 选项所属题目的类型:单选(option)、多选(check)、判断(judge)
      */

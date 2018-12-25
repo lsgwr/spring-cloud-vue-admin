@@ -28,7 +28,7 @@ public class Question {
     /**
      * 题干
      */
-    private String desc;
+    private String description;
     /**
      * 题目的类型:单选(option)、多选(check)、判断(judge)
      */

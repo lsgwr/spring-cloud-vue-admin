@@ -30,6 +30,10 @@ public class Exam {
      */
     private String title;
     /**
+     * 考试的说明
+     */
+    private String description;
+    /**
      * 考试类型(自己定义的字符串)
      */
     private String type;

@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 
+ * @Description : 用户管理的接口
  * @author      : 梁山广(Laing Shan Guang)
  * @date        : 2018/12/26 08:05
  * @email       : liangshanguang2@gmail.com

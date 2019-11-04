@@ -1,5 +1,5 @@
-# spring-cloud-exam
-[考试星](https://www.kaoshixing.com) 的SpringCloud实现，业余搞着玩地
+# spring-cloud-online-exam
+> 我的另一个项目[spring-boot-online-exam](https://github.com/19920625lsg/spring-boot-online-exam)的SpringCloud实现 
 
 ## 目录说明
 + design: 项目的设计资源，包括前端原型、数据库模型和需求分析文档

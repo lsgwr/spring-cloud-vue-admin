@@ -1,5 +1,5 @@
 # spring-cloud-online-exam
-> 我的另一个项目[spring-boot-online-exam](https://github.com/19920625lsg/spring-boot-online-exam)的SpringCloud实现 
+> 我的另一个项目[spring-boot-online-exam](https://github.com/19920625lsg/spring-boot-online-exam)的SpringCloud实现,刚搭建好架子，还没开始正式迁移
 
 ## 目录说明
 + design: 项目的设计资源，包括前端原型、数据库模型和需求分析文档

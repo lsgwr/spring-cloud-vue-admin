@@ -8,6 +8,6 @@ spring:
     password: aA111111
 
 mybatis:
-  config-location: classpath:mapper/*.xml
+  config-location: classpath:**/mapper/*.xml
   type-aliases-package: com.huawei.l00379880.admin.model
   type-handlers-package: com.huawei.l00379880.admin.mapper

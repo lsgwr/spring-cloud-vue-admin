@@ -43,24 +43,24 @@
         </dependencies>
     </dependencyManagement>
 
-    注意： 这里必须要添加，否则各种依赖有问题
-        <repositories>
-            <repository>
-                <id>spring-milestones</id>
-                <name>Spring Milestones</name>
-                <url>https://repo.spring.io/libs-milestone</url>
-                <snapshots>
-                    <enabled>false</enabled>
-                </snapshots>
-            </repository>
-        </repositories>
+    <!-- 注意： 这里必须要添加，否则各种依赖有问题-->
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
-        <build>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

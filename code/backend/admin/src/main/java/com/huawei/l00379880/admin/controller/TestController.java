@@ -6,12 +6,18 @@
  ***********************************************************/
 package com.huawei.l00379880.admin.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+@RequestMapping("/test")
+@Api(tags = "测试用接口集")
+public class TestController {
     @GetMapping("/hello")
+    @ApiOperation(value = "测试", notes = "最经典的hello world")
     public Object hello() {
         return "hello world";
     }

@@ -97,8 +97,8 @@ create table sys_user_role
   default charset = utf8 comment '用户角色表';
 
 # 6.角色菜单表
-drop table if exists sys_user_menu;
-create table sys_user_menu
+drop table if exists sys_role_menu;
+create table sys_role_menu
 (
     id               bigint(20) not null auto_increment comment '编号',
     role_id          bigint(20)  default null comment '角色id',
@@ -111,3 +111,98 @@ create table sys_user_menu
 ) engine = InnoDB
   auto_increment = 469
   default charset = utf8 comment '角色菜单表';
+
+# 7.角色机构表
+drop table if exists sys_role_dept;
+create table sys_role_dept
+(
+    id               bigint(20) not null auto_increment comment '编号',
+    role_id          bigint(20)  default null comment '角色id',
+    dept_id          bigint(20)  default null comment '机构id',
+    create_by        varchar(50) default null comment '创建人',
+    create_time      datetime    default null comment '创建时间',
+    last_update_by   varchar(50) default null comment '更新人',
+    last_update_time datetime    default null comment '更新时间',
+    primary key (id)
+) engine = InnoDB
+  auto_increment = 4
+  default charset = utf8 comment '角色机构表';
+
+# 8.字典表
+drop table if exists sys_dict;
+create table sys_dict
+(
+    id               bigint(20)     not null auto_increment comment '编号',
+    value            varchar(100)   not null comment '数据值',
+    label            varchar(100)   not null comment '标签名',
+    type             varchar(100)   not null comment '类型',
+    description      varchar(100)   not null comment '描述',
+    sort             decimal(10, 0) not null comment '排序(升序)',
+    create_by        varchar(50)  default null comment '创建人',
+    create_time      datetime     default null comment '创建时间',
+    last_update_by   varchar(50)  default null comment '更新人',
+    last_update_time datetime     default null comment '更新时间',
+    remarks          varchar(255) default null comment '备注信息',
+    del_flag         tinyint(4)   default '0' comment '是否删除：-1已删除;0正常',
+    primary key (id)
+) engine = InnoDB
+  auto_increment = 5
+  default charset = utf8 comment '字典表';
+
+# 9.配置表
+drop table if exists sys_config;
+create table sys_config
+(
+    id               bigint(20)     not null auto_increment comment '编号',
+    value            varchar(100)   not null comment '数据值',
+    label            varchar(100)   not null comment '标签名',
+    type             varchar(100)   not null comment '类型',
+    description      varchar(100)   not null comment '描述',
+    sort             decimal(10, 0) not null comment '排序(升序)',
+    create_by        varchar(50)  default null comment '创建人',
+    create_time      datetime     default null comment '创建时间',
+    last_update_by   varchar(50)  default null comment '更新人',
+    last_update_time datetime     default null comment '更新时间',
+    remarks          varchar(255) default null comment '备注信息',
+    del_flag         tinyint(4)   default '0' comment '是否删除：-1已删除;0正常',
+    primary key (id)
+) engine = InnoDB
+  auto_increment = 5
+  default charset = utf8 comment '系统配置表';
+
+# 10.操作日志表
+drop table if exists sys_log;
+create table sys_log
+(
+    id               bigint(20) not null auto_increment comment '编号',
+    user_name        varchar(50)   default null comment '用户名',
+    operation        varchar(50)   default null comment '用户操作',
+    method           varchar(200)  default null comment '请求方法',
+    params           varchar(5000) default null comment '请求参数',
+    time             bigint(20) not null comment '执行时长(毫秒)',
+    ip               varchar(64)   default null comment 'ip地址',
+    create_by        varchar(50)   default null comment '创建人',
+    create_time      datetime      default null comment '创建时间',
+    last_update_by   varchar(50)   default null comment '更新人',
+    last_update_time datetime      default null comment '更新时间',
+    primary key (id)
+) engine = InnoDB
+  auto_increment = 2798
+  default charset = utf8 comment '操作日志表';
+
+# 10.登录日志表
+drop table if exists sys_login_log;
+create table sys_login_log
+(
+    id               bigint(20) not null auto_increment comment '编号',
+    user_name        varchar(50) default null comment '用户名',
+    status           varchar(50) default null comment '登录状态:online在线，登录初始状态，方便统计在线人数;login：退出登录后将online置为login；logout:退出登录',
+    ip               varchar(64) default null comment 'ip地址',
+    create_by        varchar(50) default null comment '创建人',
+    create_time      datetime    default null comment '创建时间',
+    last_update_by   varchar(50) default null comment '更新人',
+    last_update_time datetime    default null comment '更新时间',
+    primary key (id)
+) engine = InnoDB
+  auto_increment = 2798
+  default charset = utf8 comment '登录日志表';

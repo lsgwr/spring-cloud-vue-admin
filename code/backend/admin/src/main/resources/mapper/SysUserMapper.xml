@@ -31,7 +31,7 @@
     <select id="findAll" resultType="com.huawei.l00379880.admin.model.SysUser">
         select
         <include refid="Base_Column_List"/>
-        from system_user
+        from sys_user
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from sys_user

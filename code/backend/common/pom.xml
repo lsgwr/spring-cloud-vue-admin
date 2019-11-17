@@ -16,6 +16,11 @@
     <description>admin module for backend</description>
 
     <dependencies>
+        <!-- web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!-- commons-beanutils -->
         <dependency>
             <groupId>commons-beanutils</groupId>

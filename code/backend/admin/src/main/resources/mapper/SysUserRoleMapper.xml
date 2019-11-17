@@ -19,7 +19,7 @@
         from sys_user_role
         where id = #{id,jdbcType=BIGINT}
     </select>
-    <select id="findUserRoles" resultType="com.huawei.l00379880.admin.model.SysUserRole" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="findUserRoles" resultType="com.huawei.l00379880.admin.model.SysUserRole" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from sys_user_role

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface SysConfigService extends CurdService<SysConfig> {
     List<SysConfig> findByLabel(String label);
 }

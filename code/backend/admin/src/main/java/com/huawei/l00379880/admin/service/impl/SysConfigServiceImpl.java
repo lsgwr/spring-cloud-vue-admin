@@ -13,9 +13,11 @@ import com.huawei.l00379880.core.page.MyBatisPageHelper;
 import com.huawei.l00379880.core.page.PageRequest;
 import com.huawei.l00379880.core.page.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class SysConfigServiceImpl implements SysConfigService {
 
     @Autowired

@@ -67,6 +67,7 @@ public class SysMenuServiceImpl implements SysMenuService {
             }
             SysMenu.setChildren(children);
             children.sort((o1, o2) -> o1.getOrderNum().compareTo(o2.getOrderNum()));
+            // 递归获取菜单，支持无限层级
             findChildren(children, menus, menuType);
         }
     }

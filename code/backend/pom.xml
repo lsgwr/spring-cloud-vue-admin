@@ -17,6 +17,8 @@
 
     <modules>
         <module>admin</module>
+        <module>common</module>
+        <module>core</module>
     </modules>
 
     <parent>

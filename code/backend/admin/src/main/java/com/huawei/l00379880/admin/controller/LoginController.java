@@ -25,8 +25,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/login")
-@Api(tags = "登录接口")
+@Api(tags = "登录和验证接口")
 public class LoginController {
     @Autowired
     private Producer producer;

@@ -35,7 +35,7 @@ public class MyBatisPageHelper {
      * @param args            额外的参数
      * @return 查询结果
      */
-    private static PageResult findPage(PageRequest pageRequest, Object mapper, String queryMethodName, Object... args) {
+    public static PageResult findPage(PageRequest pageRequest, Object mapper, String queryMethodName, Object... args) {
         // 设置分页参数
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();

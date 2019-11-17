@@ -9,6 +9,9 @@ package com.huawei.l00379880.admin.service.impl;
 import com.huawei.l00379880.admin.mapper.SysUserMapper;
 import com.huawei.l00379880.admin.model.SysUser;
 import com.huawei.l00379880.admin.service.SysUserService;
+import com.huawei.l00379880.core.page.MyBatisPageHelper;
+import com.huawei.l00379880.core.page.PageRequest;
+import com.huawei.l00379880.core.page.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +25,30 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public List<SysUser> findAll() {
         return sysUserMapper.findAll();
+    }
+
+    @Override
+    public int save(SysUser record) {
+        return 0;
+    }
+
+    @Override
+    public int delete(SysUser record) {
+        return 0;
+    }
+
+    @Override
+    public int delete(List<SysUser> records) {
+        return 0;
+    }
+
+    @Override
+    public SysUser findById(Long id) {
+        return null;
+    }
+
+    @Override
+    public PageResult findPage(PageRequest pageRequest) {
+        return MyBatisPageHelper.findPage(pageRequest, sysUserMapper);
     }
 }

@@ -16,4 +16,5 @@ public interface SysUserMapper extends MyBatisBaseDao<SysUser, Long> {
      * @return 所有用户
      */
     List<SysUser> findAll();
+    List<SysUser> findPage();
 }

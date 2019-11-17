@@ -52,3 +52,9 @@ mybatis:
   type-aliases-package: com.huawei.l00379880.admin.model
   configuration:
     map-underscore-to-camel-case: true
+
+pagehelper:
+  helper-dialect: mysql
+  params: count=countSql
+  reasonable: true
+  support-methods-arguments: true

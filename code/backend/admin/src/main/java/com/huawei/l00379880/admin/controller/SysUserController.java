@@ -7,12 +7,12 @@
 package com.huawei.l00379880.admin.controller;
 
 import com.huawei.l00379880.admin.service.SysUserService;
+import com.huawei.l00379880.core.http.HttpResult;
+import com.huawei.l00379880.core.page.PageRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -25,5 +25,11 @@ public class SysUserController {
     @ApiOperation(value = "获取所有用户的信息", notes = "拿到所有用户的详细信息")
     public Object findAll() {
         return sysUserService.findAll();
+    }
+
+    @PostMapping("/findPage")
+    @ApiOperation(value = "获取分页信息", notes = "根据分页参数获取详细分页信息")
+    public HttpResult findPage(@RequestBody PageRequest pageRequest) {
+        return HttpResult.ok(sysUserService.findPage(pageRequest));
     }
 }

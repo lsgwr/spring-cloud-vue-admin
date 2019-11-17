@@ -6,6 +6,7 @@
  ***********************************************************/
 package com.huawei.l00379880.admin.controller;
 
+import com.huawei.l00379880.admin.constant.SysConstants;
 import com.huawei.l00379880.admin.model.SysUser;
 import com.huawei.l00379880.admin.service.SysUserService;
 import com.huawei.l00379880.common.utils.FileUtils;
@@ -25,7 +26,6 @@ import java.util.List;
 @RequestMapping("/user")
 @Api(tags = "用户管理接口")
 public class SysUserController {
-    private final static String ADMIN = "admin";
 
     @Autowired
     private SysUserService sysUserService;
@@ -41,7 +41,7 @@ public class SysUserController {
     public HttpResult save(@RequestBody SysUser record) {
         SysUser user = sysUserService.findById(record.getId());
         if (user != null) {
-            if (ADMIN.equalsIgnoreCase(user.getName())) {
+            if (SysConstants.ADMIN.equalsIgnoreCase(user.getName())) {
                 return HttpResult.error("超级管理员不允许修改");
             }
         }
@@ -72,7 +72,7 @@ public class SysUserController {
     public HttpResult delete(@RequestBody List<SysUser> records) {
         for (SysUser record : records) {
             SysUser sysUser = sysUserService.findById(record.getId());
-            if (sysUser != null && ADMIN.equalsIgnoreCase(sysUser.getName())) {
+            if (sysUser != null && SysConstants.ADMIN.equalsIgnoreCase(sysUser.getName())) {
                 return HttpResult.error("超级管理员不允许删除!");
             }
         }

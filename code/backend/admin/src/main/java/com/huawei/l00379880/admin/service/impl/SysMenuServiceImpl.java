@@ -6,6 +6,7 @@
  ***********************************************************/
 package com.huawei.l00379880.admin.service.impl;
 
+import com.huawei.l00379880.admin.constant.SysConstants;
 import com.huawei.l00379880.admin.mapper.SysMenuMapper;
 import com.huawei.l00379880.admin.model.SysMenu;
 import com.huawei.l00379880.admin.service.SysMenuService;
@@ -20,7 +21,6 @@ import java.util.List;
 
 @Service
 public class SysMenuServiceImpl implements SysMenuService {
-    private final static String ADMIN = "admin";
     @Autowired
     private SysMenuMapper sysMenuMapper;
 
@@ -43,7 +43,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 
     @Override
     public List<SysMenu> findByUser(String userName) {
-        if (userName == null || "".equals(userName) || ADMIN.equalsIgnoreCase(userName)) {
+        if (userName == null || "".equals(userName) || SysConstants.ADMIN.equalsIgnoreCase(userName)) {
             return sysMenuMapper.findAll();
         }
         return sysMenuMapper.findByUserName(userName);

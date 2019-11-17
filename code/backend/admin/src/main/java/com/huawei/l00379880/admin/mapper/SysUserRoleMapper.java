@@ -14,7 +14,19 @@ import java.util.List;
 @Repository
 public interface SysUserRoleMapper extends MyBatisBaseDao<SysUserRole, Long> {
 
+    /**
+     * 获取指定用户的角色列表
+     *
+     * @param userId 用户id
+     * @return 角色列表
+     */
     List<SysUserRole> findUserRoles(@Param("userId") Long userId);
 
+    /**
+     * 根据用户id删除该用户下的所有角色
+     *
+     * @param userId 用户id
+     * @return 操作返回码
+     */
     int deleteByUserId(@Param("userId") Long userId);
 }

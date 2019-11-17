@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/dept")
-@Api("部门信息管理接口")
+@Api(tags = "部门管理接口")
 public class SysDeptController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class SysDeptController {
     }
 
     @PostMapping("/delete")
-    @ApiOperation("删除不么信息")
+    @ApiOperation("删除部门信息")
     public HttpResult delete(@RequestBody List<SysDept> records) {
         return HttpResult.ok(sysDeptService.delete(records));
     }

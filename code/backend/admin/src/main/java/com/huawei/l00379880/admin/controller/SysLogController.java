@@ -22,7 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/log")
-@Api(tags = "系统日志管理接口")
+@Api(tags = "操作日志接口")
 public class SysLogController {
 
     @Autowired

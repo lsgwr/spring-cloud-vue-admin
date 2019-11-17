@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/config")
-@Api(tags = "系统配置管理接口")
+@Api(tags = "系统配置接口")
 public class SysConfigController {
     @Autowired
     private SysConfigService sysConfigService;

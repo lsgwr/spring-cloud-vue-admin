@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/dict")
 @Api(tags = "字典管理接口")
 public class SysDictController {
     @Autowired

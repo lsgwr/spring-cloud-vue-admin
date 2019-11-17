@@ -71,7 +71,7 @@ public class SysUser extends BaseModel {
      */
     private String deptName;
     /**
-     * 非数据库字段，角色列表
+     * 非数据库字段，角色列表拼接的字符串
      */
     private String roleNames;
     /**

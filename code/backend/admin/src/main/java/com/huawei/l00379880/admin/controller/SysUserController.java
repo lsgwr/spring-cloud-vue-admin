@@ -32,4 +32,9 @@ public class SysUserController {
     public HttpResult findPage(@RequestBody PageRequest pageRequest) {
         return HttpResult.ok(sysUserService.findPage(pageRequest));
     }
+
+    @GetMapping("/findByName")
+    public HttpResult findByName(@RequestParam String name) {
+        return HttpResult.ok(sysUserService.findByName(name));
+    }
 }

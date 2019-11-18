@@ -9,10 +9,9 @@ package com.huawei.l00379880.admin.security;
 import org.springframework.security.core.GrantedAuthority;
 
 public class GrantedAuthorityImpl implements GrantedAuthority {
+    private static final long serialVersionUID = 1L;
 
     private String authority;
-
-    private static final long serialVersionUID = 1L;
 
     public GrantedAuthorityImpl(String authority) {
         this.authority = authority;

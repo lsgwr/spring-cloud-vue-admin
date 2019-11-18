@@ -11,30 +11,39 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.crypto.Data;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JwtTokenUtils {
-
+    private static final long serialVersionUID = 1L;
     /**
-     * 密钥
+     * 用户名
      */
-    private static final String SECRET = "liangshanguang";
+    private static final String USERNAME = Claims.SUBJECT;
+
+    private static final String CREATED = "created";
 
     /**
      * 权限列表名，根据这个键拿到权限列表
      */
     private static final String AUTHORITIES = "authorities";
 
+    /**
+     * 密钥
+     */
+    private static final String SECRET = "huawei";
+
+    /**
+     * 有效期24小时
+     */
+    private static final long EXPIRE_TIME = 24 * 60 * 60 * 1000;
+
+
     public static Authentication getAuthenticationFromToken(HttpServletRequest request) {
         Authentication authentication = null;
         // 获取请求携带的令牌
         String token = JwtTokenUtils.getToken(request);
         if (token != null) {
-            // 请求令牌不能为空
+            // 请求令牌不为空
             if (SecurityUtils.getAuthentication() == null) {
                 // 上下文中Authentication为空
                 Claims claims = getClaimsFromToken(token);
@@ -73,9 +82,27 @@ public class JwtTokenUtils {
      * @param username 我们自己的用户名
      * @return 是否有效
      */
-    private static boolean validateToken(String token, Object username) {
+    private static Boolean validateToken(String token, String username) {
         String userName = getUsernameFromToken(token);
         return (userName.equals(username) && !isTokenExpired(token));
+    }
+
+    /**
+     * 刷新token
+     *
+     * @param token 令牌
+     * @return 新的token
+     */
+    public static String refreshToken(String token) {
+        String refreshedToken;
+        try {
+            Claims claims = getClaimsFromToken(token);
+            claims.put(CREATED, new Date());
+            refreshedToken = generateToken(claims);
+        } catch (Exception e) {
+            refreshedToken = null;
+        }
+        return refreshedToken;
     }
 
     /**
@@ -123,8 +150,7 @@ public class JwtTokenUtils {
         Claims claims;
         try {
             claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
-        } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException | IllegalArgumentException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
             claims = null;
         }
         return claims;
@@ -137,7 +163,7 @@ public class JwtTokenUtils {
      * @return 解析出的token
      */
     private static String getToken(HttpServletRequest request) {
-        String token = request.getHeader("Authentication");
+        String token = request.getHeader("Authorization");
         String tokenHead = "Bearer ";
         if (token == null) {
             // Authentication没有就尝试直接拿token
@@ -151,5 +177,35 @@ public class JwtTokenUtils {
             token = null;
         }
         return token;
+    }
+
+    /**
+     * 生成token
+     *
+     * @param authentication 认证信息
+     * @return 生成的token
+     */
+    public static String generateToken(Authentication authentication) {
+        Map<String, Object> claims = new HashMap<>(3);
+        claims.put(USERNAME, SecurityUtils.getUsername(authentication));
+        claims.put(CREATED, new Date());
+        claims.put(AUTHORITIES, authentication.getAuthorities());
+        return generateToken(claims);
+    }
+
+    /**
+     * 从数据声明生成token
+     *
+     * @param claims 数据声明
+     * @return token
+     */
+    private static String generateToken(Map<String, Object> claims) {
+        // 过期时间为当前时间算起后一天
+        Date expirationDate = new Date(System.currentTimeMillis() + EXPIRE_TIME);
+        return Jwts.builder()
+                .setClaims(claims)
+                .setExpiration(expirationDate)
+                .signWith(SignatureAlgorithm.HS512, SECRET)
+                .compact();
     }
 }

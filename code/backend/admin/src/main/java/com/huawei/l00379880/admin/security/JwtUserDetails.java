@@ -34,6 +34,7 @@ public class JwtUserDetails implements UserDetails {
         return username;
     }
 
+    @JsonIgnore
     @Override
     public String getPassword() {
         return password;

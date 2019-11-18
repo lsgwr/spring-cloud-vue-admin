@@ -1,12 +1,11 @@
 /***********************************************************
- * @Description : 
+ * @Description : 登录认证过滤器
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2019/11/17 23:47
  * @email       : liangshanguang2@gmail.com
  ***********************************************************/
 package com.huawei.l00379880.admin.security;
 
-import org.apache.catalina.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;

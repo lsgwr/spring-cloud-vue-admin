@@ -16,6 +16,7 @@ import com.huawei.l00379880.core.page.PageRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -32,12 +33,14 @@ public class SysUserController {
 
     @GetMapping("/all")
     @ApiOperation("获取所有用户的信息")
+    @PreAuthorize("hasAuthority('sys:user:view')")
     public Object findAll() {
         return sysUserService.findAll();
     }
 
     @PostMapping("/save")
     @ApiOperation("新建或更新用户")
+    @PreAuthorize("hasAuthority('sys:user:add') AND hasAuthority('sys:user:edit')")
     public HttpResult save(@RequestBody SysUser record) {
         SysUser user = sysUserService.findById(record.getId());
         if (user != null) {
@@ -69,6 +72,7 @@ public class SysUserController {
 
     @PostMapping("/delete")
     @ApiOperation("删除用户列表")
+    @PreAuthorize("hasAuthority('sys:user:delete')")
     public HttpResult delete(@RequestBody List<SysUser> records) {
         for (SysUser record : records) {
             SysUser sysUser = sysUserService.findById(record.getId());
@@ -81,12 +85,14 @@ public class SysUserController {
 
     @GetMapping("/findByName")
     @ApiOperation("根据用户名获取用户信息")
+    @PreAuthorize("hasAuthority('sys:user:view')")
     public HttpResult findByName(@RequestParam String name) {
         return HttpResult.ok(sysUserService.findByName(name));
     }
 
     @GetMapping("/findPermissions")
     @ApiOperation("根据用户名获取用户权限")
+    @PreAuthorize("hasAuthority('sys:user:view')")
     public HttpResult findPermissions(@RequestParam String name) {
         return HttpResult.ok(sysUserService.findPermissions(name));
     }
@@ -99,6 +105,7 @@ public class SysUserController {
 
     @PostMapping("/exportExcelUser")
     @ApiOperation("导出用户列表到Excel中")
+    @PreAuthorize("hasAuthority('sys:user:view')")
     public void exportExcelUser(@RequestBody PageRequest pageRequest, HttpServletResponse res) {
         File file = sysUserService.createUserExcelFile(pageRequest);
         FileUtils.downloadFile(res, file, file.getName());
@@ -106,6 +113,7 @@ public class SysUserController {
 
     @PostMapping("/findPage")
     @ApiOperation("获取分页信息")
+    @PreAuthorize("hasAuthority('sys:user:view')")
     public HttpResult findPage(@RequestBody PageRequest pageRequest) {
         return HttpResult.ok(sysUserService.findPage(pageRequest));
     }

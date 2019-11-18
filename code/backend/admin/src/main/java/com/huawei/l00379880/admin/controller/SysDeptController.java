@@ -12,6 +12,7 @@ import com.huawei.l00379880.core.http.HttpResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,18 +27,21 @@ public class SysDeptController {
 
     @PostMapping("/save")
     @ApiOperation("保存部门信息")
+    @PreAuthorize("hasAuthority('sys:dept:add') AND hasAuthority('sys:dept:edit')")
     public HttpResult save(@RequestBody SysDept record) {
         return HttpResult.ok(sysDeptService.save(record));
     }
 
     @PostMapping("/delete")
     @ApiOperation("删除部门信息")
+    @PreAuthorize("hasAuthority('sys:dept:delete')")
     public HttpResult delete(@RequestBody List<SysDept> records) {
         return HttpResult.ok(sysDeptService.delete(records));
     }
 
     @GetMapping("/findTree")
     @ApiOperation("获取部门树")
+    @PreAuthorize("hasAuthority('sys:dept:view')")
     public HttpResult findTree() {
         return HttpResult.ok(sysDeptService.findTree());
     }

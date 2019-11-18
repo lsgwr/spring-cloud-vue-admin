@@ -1,5 +1,5 @@
 /***********************************************************
- * @Description : 
+ * @Description : 登录日志接口
  * @author      : 梁山广(Liang Shan Guang)
  * @date        : 2019/11/17 21:56
  * @email       : liangshanguang2@gmail.com
@@ -13,6 +13,7 @@ import com.huawei.l00379880.core.page.PageRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +30,14 @@ public class SysLoginLogController {
 
     @PostMapping("/findPage")
     @ApiOperation("获取所有登录日志并进行分页")
+    @PreAuthorize("hasAuthority('sys:loginlog:view')")
     public HttpResult findPage(@RequestBody PageRequest pageRequest) {
         return HttpResult.ok(sysLoginLogService.findPage(pageRequest));
     }
 
     @PostMapping("/delete")
     @ApiOperation("删除登录日志")
+    @PreAuthorize("hasAuthority('sys:loginlog:delete')")
     public HttpResult delete(@RequestBody List<SysLoginLog> records) {
         return HttpResult.ok(sysLoginLogService.delete(records));
     }

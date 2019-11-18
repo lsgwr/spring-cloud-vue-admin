@@ -6,6 +6,7 @@
  ***********************************************************/
 package com.huawei.l00379880.admin.security;
 
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,5 +39,9 @@ public class SecurityUtils {
             }
         }
         return username;
+    }
+
+    public static JwtAuthenticationToken login(HttpServletRequest request, String username, String password, AuthenticationManager authenticationManager) {
+        // Todo:
     }
 }

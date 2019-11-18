@@ -100,6 +100,7 @@ public class JwtTokenUtils {
             claims.put(CREATED, new Date());
             refreshedToken = generateToken(claims);
         } catch (Exception e) {
+            e.printStackTrace();
             refreshedToken = null;
         }
         return refreshedToken;
@@ -117,6 +118,7 @@ public class JwtTokenUtils {
             Claims claims = getClaimsFromToken(token);
             username = claims.getSubject();
         } catch (Exception e) {
+            e.printStackTrace();
             username = null;
         }
         return username;
@@ -136,6 +138,7 @@ public class JwtTokenUtils {
             return expiration.before(new Date());
         } catch (Exception e) {
             // 出异常，无法比较，表示还没过期
+            e.printStackTrace();
             return false;
         }
     }
@@ -151,6 +154,7 @@ public class JwtTokenUtils {
         try {
             claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
         } catch (Exception e) {
+            e.printStackTrace();
             claims = null;
         }
         return claims;

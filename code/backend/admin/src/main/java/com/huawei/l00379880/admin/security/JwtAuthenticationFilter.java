@@ -26,6 +26,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         // 获取token，并检查登录状态
         SecurityUtils.checkAuthentication(request);
+        // Todo:应该就是这里出了问题
         chain.doFilter(request, response);
     }
 }

@@ -11,9 +11,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 import java.util.*;
 
-public class JwtTokenUtils {
+public class JwtTokenUtils implements Serializable{
     private static final long serialVersionUID = 1L;
     /**
      * 用户名

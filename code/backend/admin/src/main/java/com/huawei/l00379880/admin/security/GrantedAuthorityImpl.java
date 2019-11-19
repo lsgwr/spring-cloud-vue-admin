@@ -23,6 +23,6 @@ public class GrantedAuthorityImpl implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return null;
+        return this.authority;
     }
 }

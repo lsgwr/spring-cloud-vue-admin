@@ -23,7 +23,7 @@ export default function $axios (options) {
         if (token) { // 如果Cookie里有token就在发送请求的时候带上。
           config.headers.token = token
         } else { // Cookie中没有token，说明用户还没登录，跳转到登录页
-          router.push('/login')
+          router.push('/login') // 实际可以用this.$router.push('router中的路径')来进行跳转，因为在main.js中已经全局注册了router
         }
         return config
       },

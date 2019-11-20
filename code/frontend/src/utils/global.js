@@ -5,3 +5,11 @@
  */
 
 // 后台服务器的接口基地址
+export const baseUrl = '/api'
+// 图床的基地址
+export const picBaseUrl = 'https://i.loli.net'
+
+export default {
+  baseUrl,
+  picBaseUrl
+}

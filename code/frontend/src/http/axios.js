@@ -10,7 +10,7 @@ export default function $axios (options) {
   // Promise是异步编程的一种解决方案, 有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数(例如ajax调用)
   return new Promise((resolve, reject) => {
     const instance = axios.create({
-      baseUrl: config.baseUrl,
+      baseURL: config.baseUrl,
       headers: config.headers,
       timeout: config.timeout,
       withCredentials: config.withCredentials

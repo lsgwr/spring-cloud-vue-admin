@@ -10,18 +10,18 @@
         <el-input type="password" v-model="loginForm.password" auto-complete="false" placeholder="密码"></el-input>
       </el-form-item>
       <el-form-item>
-       <el-row :gutter="10">
-         <el-col :span="13">
-           <el-form-item prop="captcha">
-             <el-input type="text" v-model="loginForm.captcha" auto-complete="false" placeholder="验证码，单击图片刷新" style="width: 100%"></el-input>
-           </el-form-item>
-         </el-col>
-         <el-col class="line" :span="11">
-           <el-form-item>
-             <img :src="loginForm.src" style="width: 100%" class="pointer" @click="refreshCaptcha()" alt="">
-           </el-form-item>
-         </el-col>
-       </el-row>
+        <el-row :gutter="10">
+          <el-col :span="13">
+            <el-form-item prop="captcha">
+              <el-input type="text" v-model="loginForm.captcha" auto-complete="false" placeholder="验证码，单击图片刷新" style="width: 100%"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col class="line" :span="11">
+            <el-form-item>
+              <img :src="loginForm.src" style="width: 100%" class="pointer" @click="refreshCaptcha()" alt="">
+            </el-form-item>
+          </el-col>
+        </el-row>
       </el-form-item>
       <el-form-item style="width: 100%;">
         <!-- click.native.prevent阻止默认事件很重要！ -->
@@ -34,7 +34,6 @@
 
 <script>
 import Cookies from 'js-cookie'
-import router from '../router'
 
 export default {
   name: 'Login',
@@ -61,20 +60,28 @@ export default {
   },
   methods: {
     login () {
-      const data = {}
-      data.account = 'admin'
-      data.captcha = 'an475'
-      data.password = 'admin'
-      this.$api.login.login(data).then(function (res) {
-        alert(res.data.token)
-        Cookies.set('token', res.data.token)
-        router.push('/')
-      }).catch(function (error) {
-        alert(error)
+      this.loading = true
+      let userInfo = {
+        account: this.loginForm.account,
+        password: this.loginForm.password,
+        captcha: this.loginForm.captcha
+      }
+      this.$api.login.login(userInfo).then((res) => { // 调用登录接口
+        if (res.msg != null) {
+          // 获取token失败时
+          this.$message({ message: res.msg, type: 'error' })
+        } else {
+          Cookies.set('token', res.data.token) // 放置token到Cookie中
+          sessionStorage.setItem('user', userInfo.account) // 保存用户到本地会话
+          this.$router.push('/') // 登录成功，跳转到主页
+        }
+        this.loading = false
+      }).catch((err) => {
+        this.$message({ message: err.message, type: 'error' })
       })
     },
     refreshCaptcha () {
-      // Todo:验证码刷新
+      // 验证码刷新
       this.loginForm.src = this.global.baseUrl + '/captcha.jpg?t=' + new Date().getTime()
     },
     reset () {

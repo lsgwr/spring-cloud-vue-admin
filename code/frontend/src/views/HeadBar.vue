@@ -1,5 +1,11 @@
 <template>
   <div class="headbar" style="background: #14889A" :class="collapse?'position-collapse-left':'position-left'">
+    <!--  导航收缩  -->
+    <span class="hamburg">
+      <el-menu background-color="#14889A" text-color="#fff" active-text-color="#14889A" mode="horizontal">
+        <el-menu-item index="1" @click="onCollapse"><Hamburger :isActive="collapse"></Hamburger></el-menu-item>
+      </el-menu>
+    </span>
     <!-- 工具栏 -->
     <span class="toolbar">
       <el-menu background-color="#14889A" text-color="#14889A" active-text-color="#14889A" mode="horizontal">
@@ -16,9 +22,11 @@
 
 <script>
 import { mapState } from 'vuex'
+import Hamburger from '../components/Hamburger/Index'
 
 export default {
   name: 'HeadBar',
+  components: { Hamburger },
   data () {
     return {
       user: {
@@ -34,6 +42,10 @@ export default {
   methods: {
     selectNavBar (key, keyPath) {
       console.log(key, keyPath)
+    },
+    // 折叠导航栏
+    onCollapse () {
+      this.$store.commit('onCollapse')
     }
   },
   mounted () {
@@ -64,7 +76,7 @@ export default {
     border-left-style: solid;
   }
 
-  .navbar {
+  .hamburg, .navbar {
     float: left;
   }
 

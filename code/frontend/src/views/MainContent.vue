@@ -1,5 +1,6 @@
 <template>
-  <div id="main-container" class="main-container" :class="'position-left'">
+  <!-- collapse既可以用mapState获得，也可以用$store.state.xxx获取，两种拿vuex全局变量的方式而已 -->
+  <div id="main-container" class="main-container" :class="$store.state.app.collapse?'position-collapse-left':'position-left'">
     <!--  标签页  -->
     <div class="tab-container"></div>
     <!--  主内容区域  -->
@@ -45,5 +46,9 @@ export default {
 
   .position-left {
     left: 200px;
+  }
+
+  .position-collapse-left {
+    left: 65px;
   }
 </style>

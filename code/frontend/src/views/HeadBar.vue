@@ -1,5 +1,5 @@
 <template>
-  <div class="headbar" style="background: #14889A" :class="position-left">
+  <div class="headbar" style="background: #14889A" :class="'position-left'">
     <!-- 工具栏 -->
     <span class="toolbar">
       <el-menu style="background: #14889A" text-color="#14889A" active-text-color="#14889A" mode="horizontal">

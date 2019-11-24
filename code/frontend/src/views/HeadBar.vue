@@ -2,10 +2,10 @@
   <div class="headbar" style="background: #14889A" :class="'position-left'">
     <!-- 工具栏 -->
     <span class="toolbar">
-      <el-menu style="background: #14889A" text-color="#14889A" active-text-color="#14889A" mode="horizontal">
+      <el-menu background-color="#14889A" text-color="#14889A" active-text-color="#14889A" mode="horizontal">
         <el-menu-item index="1">
           <span class="user-info">
-            <img :src="user.avatar" alt="">
+            <img :src="user.avatar" alt=""/>
             {{ user.name }}
           </span>
         </el-menu-item>

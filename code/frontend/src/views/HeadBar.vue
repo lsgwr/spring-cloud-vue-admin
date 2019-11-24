@@ -1,5 +1,5 @@
 <template>
-  <div class="headbar" style="background: #14889A" :class="'position-left'">
+  <div class="headbar" style="background: #14889A" :class="collapse?'position-collapse-left':'position-left'">
     <!-- 工具栏 -->
     <span class="toolbar">
       <el-menu background-color="#14889A" text-color="#14889A" active-text-color="#14889A" mode="horizontal">
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'HeadBar',
   data () {
@@ -40,6 +42,11 @@ export default {
       this.user.name = user
       this.user.avatar = require('../assets/user.png')
     }
+  },
+  computed: {
+    ...mapState({
+      collapse: state => state.app.collapse
+    })
   }
 }
 </script>
@@ -81,5 +88,9 @@ export default {
 
   .position-left {
     left: 200px;
+  }
+
+  .position-collapse-left {
+    left: 65px;
   }
 </style>

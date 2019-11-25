@@ -18,11 +18,11 @@
     <!--  工具栏  -->
     <span class="toolbar">
       <el-menu :background-color="themeColor" :text-color="themeColor" :active-text-color="themeColor" mode="horizontal">
-        <!-- 主题切换 -->
+        <!-- 1.主题切换 -->
         <el-menu-item index="1">
           <ThemePicker class="theme-picker" :default="themeColor" @onThemeChange="onThemeChange"></ThemePicker>
         </el-menu-item>
-        <!--  语言切换  -->
+        <!--  2.语言切换  -->
         <el-menu-item index="2" v-popover:popover-lang>
           <li style="color: #fff;" class="fa fa-language fa-lg"></li>
           <el-popover ref="popover-lang" placement="bottom-start" trigger="click" v-model="langVisible">
@@ -30,7 +30,16 @@
             <div class="lang-item" @click="changeLanguage('en_us')">English</div>
           </el-popover>
         </el-menu-item>
-        <!-- 用户信息 -->
+        <!-- 3.消息通知 -->
+        <el-menu-item index="3" v-popover:popover-message>
+          <el-badge :value="4" :max="99" class="badge" type="danger">
+            <li style="color:#fff;" class="fa fa-bell-o fa-lg"></li>
+          </el-badge>
+          <el-popover ref="popover-message" placement="bottom-end" trigger="click">
+            <MessagePanel></MessagePanel>
+          </el-popover>
+        </el-menu-item>
+        <!-- 5.用户信息 -->
         <el-menu-item index="5" v-popover:popover-personal>
           <span class="user-info">
             <img :src="user.avatar" alt=""/>
@@ -50,10 +59,11 @@ import { mapState } from 'vuex'
 import Hamburger from '../components/Hamburger/Index'
 import ThemePicker from '../components/ThemePicker/Index'
 import PersonalPanel from '../components/core/PersonalPanel'
+import MessagePanel from '../components/core/MessagePanel'
 
 export default {
   name: 'HeadBar',
-  components: { PersonalPanel, ThemePicker, Hamburger },
+  components: { MessagePanel, PersonalPanel, ThemePicker, Hamburger },
   data () {
     return {
       user: {
@@ -151,6 +161,10 @@ export default {
       margin: 10px 0px 10px 10px;
       float: right;
     }
+  }
+
+  .badge {
+    line-height: 18px;
   }
 
   .position-left {

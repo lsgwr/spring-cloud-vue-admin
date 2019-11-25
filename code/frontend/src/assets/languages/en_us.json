@@ -10,7 +10,7 @@
     "config": "Config",
     "backup": "Backup",
     "restore": "Restore",
-    "backRestore": "Back Restore",
+    "backupRestore": "Back Restore",
     "versionName": "Version",
     "exit": "Exit"
   },

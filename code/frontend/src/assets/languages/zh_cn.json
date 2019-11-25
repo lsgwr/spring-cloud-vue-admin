@@ -10,7 +10,7 @@
     "config": "系统配置",
     "backup": "备份",
     "restore": "还原",
-    "backRestore": "备份还原",
+    "backupRestore": "备份还原",
     "versionName": "版本名称",
     "exit": "退出"
   },

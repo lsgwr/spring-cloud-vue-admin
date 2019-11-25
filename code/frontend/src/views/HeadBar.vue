@@ -1,15 +1,19 @@
 <template>
-  <div class="headbar" style="background: #14889A" :class="collapse?'position-collapse-left':'position-left'">
-    <!--  导航收缩  -->
+  <div class="headbar" :style="{'background': themeColor}" :class="collapse?'position-collapse-left':'position-left'">
+    <!-- 导航收缩 -->
     <span class="hamburg">
-      <el-menu background-color="#14889A" text-color="#fff" active-text-color="#14889A" mode="horizontal">
+      <el-menu :background-color="themeColor" text-color="#fff" :active-text-color="themeColor" mode="horizontal">
         <el-menu-item index="1" @click="onCollapse"><Hamburger :isActive="collapse"></Hamburger></el-menu-item>
       </el-menu>
     </span>
     <!-- 工具栏 -->
     <span class="toolbar">
-      <el-menu background-color="#14889A" text-color="#14889A" active-text-color="#14889A" mode="horizontal">
+      <el-menu :background-color="themeColor" :text-color="themeColor" :active-text-color="themeColor" mode="horizontal">
+        <!-- 主题切换 -->
         <el-menu-item index="1">
+          <ThemePicker class="theme-picker" :default="themeColor" @onThemeChange="onThemeChange"></ThemePicker>
+        </el-menu-item>
+        <el-menu-item index="2">
           <span class="user-info">
             <img :src="user.avatar" alt=""/>
             {{ user.name }}
@@ -23,10 +27,11 @@
 <script>
 import { mapState } from 'vuex'
 import Hamburger from '../components/Hamburger/Index'
+import ThemePicker from '../components/ThemePicker/Index'
 
 export default {
   name: 'HeadBar',
-  components: { Hamburger },
+  components: { ThemePicker, Hamburger },
   data () {
     return {
       user: {
@@ -46,6 +51,10 @@ export default {
     // 折叠导航栏
     onCollapse () {
       this.$store.commit('onCollapse')
+    },
+    // 切换主题
+    onThemeChange (themeColor) {
+      this.$store.commit('setThemeColor', themeColor)
     }
   },
   mounted () {
@@ -57,6 +66,7 @@ export default {
   },
   computed: {
     ...mapState({
+      themeColor: state => state.app.themeColor,
       collapse: state => state.app.collapse
     })
   }

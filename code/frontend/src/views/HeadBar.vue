@@ -30,13 +30,22 @@
             <div class="lang-item" @click="changeLanguage('en_us')">English</div>
           </el-popover>
         </el-menu-item>
-        <!-- 3.消息通知 -->
+        <!-- 3.我的私信 -->
         <el-menu-item index="3" v-popover:popover-message>
-          <el-badge :value="4" :max="99" class="badge" type="danger">
-            <li style="color:#fff;" class="fa fa-bell-o fa-lg"></li>
+          <el-badge :value="5" :max="99" class="badge" type="danger">
+            <li style="color:#fff;" class="fa fa-envelope-o fa-lg"></li>
           </el-badge>
           <el-popover ref="popover-message" placement="bottom-end" trigger="click">
             <MessagePanel></MessagePanel>
+          </el-popover>
+        </el-menu-item>
+        <!-- 4.消息通知 -->
+        <el-menu-item index="4" v-popover:popover-notice>
+          <el-badge :value="4" :max="99" class="badge" type="danger">
+            <li style="color:#fff;" class="fa fa-bell-o fa-lg"></li>
+          </el-badge>
+          <el-popover ref="popover-notice" placement="bottom-end" trigger="click">
+            <NoticePanel></NoticePanel>
           </el-popover>
         </el-menu-item>
         <!-- 5.用户信息 -->
@@ -60,10 +69,11 @@ import Hamburger from '../components/Hamburger/Index'
 import ThemePicker from '../components/ThemePicker/Index'
 import PersonalPanel from '../components/core/PersonalPanel'
 import MessagePanel from '../components/core/MessagePanel'
+import NoticePanel from '../components/core/NoticePanel'
 
 export default {
   name: 'HeadBar',
-  components: { MessagePanel, PersonalPanel, ThemePicker, Hamburger },
+  components: { NoticePanel, MessagePanel, PersonalPanel, ThemePicker, Hamburger },
   data () {
     return {
       user: {

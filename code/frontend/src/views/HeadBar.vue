@@ -30,11 +30,15 @@
             <div class="lang-item" @click="changeLanguage('en_us')">English</div>
           </el-popover>
         </el-menu-item>
-        <el-menu-item index="5">
+        <!-- 用户信息 -->
+        <el-menu-item index="5" v-popover:popover-personal>
           <span class="user-info">
             <img :src="user.avatar" alt=""/>
             {{ user.name }}
           </span>
+          <el-popover ref="popover-personal" placement="bottom-end" trigger="click" :visible-arrow="false">
+            <personal-panel :user="user"></personal-panel>
+          </el-popover>
         </el-menu-item>
       </el-menu>
     </span>
@@ -45,10 +49,11 @@
 import { mapState } from 'vuex'
 import Hamburger from '../components/Hamburger/Index'
 import ThemePicker from '../components/ThemePicker/Index'
+import PersonalPanel from '../components/core/PersonalPanel'
 
 export default {
   name: 'HeadBar',
-  components: { ThemePicker, Hamburger },
+  components: { PersonalPanel, ThemePicker, Hamburger },
   data () {
     return {
       user: {

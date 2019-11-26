@@ -18,7 +18,7 @@
     <el-table :data="tableTreeData" stripe size="mini" style="width: 100%;"
               v-loading="loading" rowKey="id" element-loading-text="$t('action.loading')">
       <el-table-column
-        prop="id" header-align="center" align="center" width="80" label="ID">
+        prop="id" header-align="center" align="center" width="120" label="ID">
       </el-table-column>
       <table-tree-column
         prop="name" header-align="center" treeKey="id" width="150" label="名称">
@@ -30,7 +30,7 @@
         prop="orderNum" header-align="center" align="center" label="排序">
       </el-table-column>
       <el-table-column
-        prop="createBy" header-align="center" align="center" label="创建人">
+        prop="createBy" header-align="center" align="center" width="120" label="创建人">
       </el-table-column>
       <el-table-column
         prop="createTime" header-align="center" align="center" label="创建时间" :formatter="dateFormat">

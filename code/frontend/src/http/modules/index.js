@@ -40,7 +40,7 @@ const REST_URLS = {
   RoleSave: `/${modules[7]}/save`, // 保存
   RoleDelete: `/${modules[7]}/delete`, // 删除
   RolePage: `/${modules[7]}/findPage`, // 分页查询
-  RoleAll: `/${modules[7]}/findPage`, // 获取所有角色
+  RoleAll: `/${modules[7]}/findAll`, // 获取所有角色
   RoleMenusGet: `/${modules[7]}/findRoleMenus`, // 获取指定角色可以访问的菜单集合
   RoleMenusSave: `/${modules[7]}/saveRoleMenus`, // 保存指定角色可以访问的菜单集合
 

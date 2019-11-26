@@ -10,7 +10,7 @@
           <kt-button icon="fa fa-search" :label="$t('action.search')" perms="sys:role:view" type="primary" @click="findPage(null)"/>
         </el-form-item>
         <el-form-item>
-          <kt-button icon="fa fa-plus" :label="$t('action.add')" perms="sys:user:add2" type="primary" @click="handleAdd"/>
+          <kt-button icon="fa fa-plus" :label="$t('action.add')" perms="sys:user:add" type="primary" @click="handleAdd"/>
         </el-form-item>
       </el-form>
     </div>

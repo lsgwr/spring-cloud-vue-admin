@@ -5,15 +5,25 @@ import NotFound from '../views/404'
 import Login from '../views/Login'
 import store from '../store'
 import api from '../http/api'
+import Introduction from '../components/Core/Introduction'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
     component: Home,
-    children: []
+    children: [
+      {
+        path: '',
+        name: '系统介绍',
+        component: Introduction,
+        meta: {
+          icon: 'fa fa-home fa-lg',
+          index: 0
+        }
+      }
+    ]
   },
   {
     path: '/about',
@@ -132,7 +142,7 @@ function addDynamicRoutes (menuList = [], routes = []) {
           url += array[i].substring(0, 1).toUpperCase() + array[i].substring(1) + '/'
         }
         url = url.substring(0, url.length - 1)
-        route['component'] = resolve => require([`../components/${url}`], resolve)
+        route['component'] = resolve => require([`@/components/${url}`], resolve)
       } catch (e) {
       }
       routes.push(route)

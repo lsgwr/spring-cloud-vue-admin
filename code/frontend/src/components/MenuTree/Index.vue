@@ -1,5 +1,7 @@
 <template>
-  <el-submenu v-if="menu.children && menu.children.length >= 1" :index="'' + menu.id">
+  <!-- 解决栈溢出的问题,element ui的官方bug,https://github.com/ElemeFE/element/issues/17391  -->
+  <!-- 和 https://github.com/ElemeFE/element/pull/17133 等新版本发布去掉popper-append-to-body即可 -->
+  <el-submenu v-if="menu.children && menu.children.length >= 1" :index="'' + menu.id" :popper-append-to-body="false">
     <template slot="title">
       <i :class="menu.icon"></i>
       <span slot="title">{{menu.name}}</span>

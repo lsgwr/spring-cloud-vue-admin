@@ -42,8 +42,7 @@
     </kt-table>
     <!--新增编辑界面-->
     <el-dialog :title="operation?'新增':'编辑'" width="40%" :visible.sync="dialogVisible" :close-on-click-modal="false">
-      <el-form :model="dataForm" label-width="80px" :rules="dataFormRules" ref="dataForm" :size="size"
-               label-position="right">
+      <el-form :model="dataForm" label-width="80px" :rules="dataFormRules" ref="dataForm" :size="size" label-position="right">
         <el-form-item label="ID" prop="id" v-if="false">
           <el-input v-model="dataForm.id" :disabled="true" auto-complete="off"></el-input>
         </el-form-item>
@@ -71,8 +70,7 @@
         <el-form-item label="角色" prop="userRoles" v-if="!operation">
           <el-select v-model="dataForm.userRoles" multiple placeholder="请选择"
                      style="width: 100%;">
-            <el-option v-for="item in roles" :key="item.id"
-                       :label="item.remark" :value="item.id">
+            <el-option v-for="item in roles" :key="item.id" :label="item.remark" :value="item.id">
             </el-option>
           </el-select>
         </el-form-item>

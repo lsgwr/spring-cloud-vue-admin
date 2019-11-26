@@ -13,8 +13,7 @@
       <el-table-column :label="$t('action.operation')" width="185" fixed="right" v-if="showOperation" header-align="center" align="center">
         <template slot-scope="scope">
           <kt-button icon="fa fa-edit" :label="$t('action.edit')" :perms="permsEdit" :size="size" @click="handleEdit(scope.$index, scope.row)"/>
-          <kt-button icon="fa fa-trash" :label="$t('action.delete')" :perms="permsDelete" :size="size" type="danger"
-                     @click="handleDelete(scope.$index, scope.row)"/>
+          <kt-button icon="fa fa-trash" :label="$t('action.delete')" :perms="permsDelete" :size="size" type="danger" @click="handleDelete(scope.$index, scope.row)"/>
         </template>
       </el-table-column>
     </el-table>
@@ -52,7 +51,7 @@ export default {
     },
     maxHeight: { // 表格最大高度
       type: Number,
-      default: 420
+      default: 650
     },
     showOperation: { // 是否显示操作组件
       type: Boolean,

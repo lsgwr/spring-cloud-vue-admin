@@ -45,7 +45,7 @@ const routes = [
   }
 ]
 
-let router = new VueRouter({
+const router = new VueRouter({
   routes
 })
 
@@ -93,9 +93,7 @@ function addDynamicMenuAndRoutes (userName, to, from) {
       // Todo:下面这两行很精巧，重点理解下
       router.options.routes[0].children = router.options.routes[0].children.concat(dynamicRoutes)
       // 重新设置router，要不每次都addRoutes会导致路由重复添加
-      router = new VueRouter({
-        routes
-      })
+      router.addRoutes(router.options.routes)
       store.commit('menuRouteLoaded', true)
       store.commit('setNavTree', res.data)
     })

@@ -5,19 +5,40 @@
       <img v-if="collapse" src="../assets/logo.png" alt=""/>
       <div>{{ collapse?'':appName }}</div>
     </div>
+    <!-- 导航菜单 -->
+    <el-menu ref="navmenu" default-active="1" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'"
+             :collapse="collapse" :collapse-transition="false" :unique-opened="true  "
+             @open="handleopen" @close="handleclose" @select="handleselect">
+      <!-- 导航菜单树组件，动态加载菜单 -->
+      <MenuTree v-for="item in navTree" :key="item.id" :menu="item"></MenuTree>
+    </el-menu>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import MenuTree from '../components/MenuTree/Index'
 
 export default {
   name: 'NavBar',
+  components: { MenuTree },
+  methods: {
+    handleopen () {
+      console.log('handleopen')
+    },
+    handleclose () {
+      console.log('handleclose')
+    },
+    handleselect (a, b) {
+      console.log('handleselect')
+    }
+  },
   computed: {
     ...mapState({
       appName: state => state.app.appName,
       themeColor: state => state.app.themeColor,
-      collapse: state => state.app.collapse
+      collapse: state => state.app.collapse,
+      navTree: state => state.menu.navTree
     })
   }
 }

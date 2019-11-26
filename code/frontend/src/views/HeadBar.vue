@@ -65,8 +65,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import Hamburger from '../components/Hamburger/Index'
-import ThemePicker from '../components/ThemePicker/Index'
+import Hamburger from '../components/Hamburger'
+import ThemePicker from '../components/ThemePicker'
 import PersonalPanel from '../components/Core/PersonalPanel'
 import MessagePanel from '../components/Core/MessagePanel'
 import NoticePanel from '../components/Core/NoticePanel'

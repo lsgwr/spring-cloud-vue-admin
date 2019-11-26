@@ -17,7 +17,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import MenuTree from '../components/MenuTree/Index'
+import MenuTree from '../components/MenuTree'
 
 export default {
   name: 'NavBar',

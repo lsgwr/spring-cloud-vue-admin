@@ -52,6 +52,14 @@ export default {
     bottom: 0;
     z-index: 1020;
 
+    .el-menu {
+      position: absolute;
+      top: 60px;
+      bottom: 0px;
+      text-align: left;
+      // background-color: #2968a30c;
+    }
+
     .logo {
       position: absolute;
       top: 0px;

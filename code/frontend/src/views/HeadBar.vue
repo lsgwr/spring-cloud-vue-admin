@@ -12,7 +12,7 @@
                @select="selectNavBar()">
         <el-menu-item index="1" @click="$router.push('/')">{{ $t('common.home') }}</el-menu-item>
         <el-menu-item index="2" @click="openWindow('https://github.com/19920625lsg')">{{ $t('common.doc') }}</el-menu-item>
-        <el-menu-item index="3" @click="openWindow('https://lsgwr.gitee.io')">{{ $t('common.doc') }}</el-menu-item>
+        <el-menu-item index="3" @click="openWindow('https://lsgwr.gitee.io')">{{ $t('common.blog') }}</el-menu-item>
       </el-menu>
     </span>
     <!--  工具栏  -->

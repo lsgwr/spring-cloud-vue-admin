@@ -23,7 +23,7 @@ export default {
     },
     size: { // 按钮尺寸
       type: String,
-      default: null
+      default: 'mini'
     },
     type: { // 按钮类型
       type: String,

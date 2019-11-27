@@ -110,7 +110,7 @@ export default {
       if (data !== null) {
         this.pageRequest = data.pageRequest
       }
-      this.pageRequest.params = [{ name: 'label', value: this.filters.label }]
+      this.pageRequest.params = { name: 'label', value: this.filters.label }
       this.$api.config.findPage(this.pageRequest).then((res) => {
         this.pageResult = res.data
       }).then(data != null ? data.callback : '')

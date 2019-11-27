@@ -174,8 +174,8 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     public PageResult findPage(PageRequest pageRequest) {
         PageResult pageResult = null;
-        Object name = pageRequest.getParam("name");
-        Object email = pageRequest.getParam("email");
+        Object name = pageRequest.getParamValue("name");
+        Object email = pageRequest.getParamValue("email");
         if (name != null) {
             if (email != null) {
                 pageResult = MyBatisPageHelper.findPage(pageRequest, sysUserMapper, "findPageByNameAndEmail", name, email);

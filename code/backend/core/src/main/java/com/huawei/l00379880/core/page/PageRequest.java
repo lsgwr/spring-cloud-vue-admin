@@ -6,9 +6,12 @@
  ***********************************************************/
 package com.huawei.l00379880.core.page;
 
-import java.util.HashMap;
-import java.util.Map;
+import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
 public class PageRequest {
     /**
      * 当前页码
@@ -23,39 +26,34 @@ public class PageRequest {
     /**
      * 查询参数
      */
-    private Map<String, Object> params = new HashMap<>();
+    private List<Param> params = new ArrayList<>();
 
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public Map<String, Object> getParams() {
-        return params;
-    }
-
-    public void setParams(Map<String, Object> params) {
-        this.params = params;
+    /**
+     * 查询参数对象
+     *
+     * @param name Param的value
+     * @return 指定的键值对对象
+     */
+    public Param getParam(String name) {
+        for (Param param : this.params) {
+            if (name != null && name.equals(param.getName())) {
+                return param;
+            }
+        }
+        return null;
     }
 
     /**
-     * 根据键拿到请求参数的指定键值对
+     * 查询参数值
      *
-     * @param key map的key
-     * @return 指定键的值
+     * @param name 参数名称
+     * @return 参数值
      */
-    public Object getParam(String key) {
-        return params.get(key);
+    public String getParamValue(String name) {
+        Param param = getParam(name);
+        if (param != null) {
+            return param.getValue();
+        }
+        return null;
     }
 }

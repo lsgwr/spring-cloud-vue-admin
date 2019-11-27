@@ -50,11 +50,11 @@ public class SysLoginLogServiceImpl implements SysLoginLogService {
 
     @Override
     public PageResult findPage(PageRequest pageRequest) {
-        Object userName = pageRequest.getParam("userName");
+        Object userName = pageRequest.getParamValue("userName");
         if (userName != null) {
             return MyBatisPageHelper.findPage(pageRequest, sysLoginLogMapper, "findPageByUserName", userName);
         }
-        Object status = pageRequest.getParam("status");
+        Object status = pageRequest.getParamValue("status");
         if (status != null) {
             return MyBatisPageHelper.findPage(pageRequest, sysLoginLogMapper, "findPageByStatus", status);
         }

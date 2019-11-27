@@ -7,15 +7,15 @@
           <el-input v-model="filters.label" placeholder="名称"></el-input>
         </el-form-item>
         <el-form-item>
-          <kt-button icon="fa fa-search" :label="$t('action.search')" perms="sys:config:view" type="primary" @click="findPage(null)"/>
+          <kt-button icon="fa fa-search" :label="$t('action.search')" perms="sys:dict:view" type="primary" @click="findPage(null)"/>
         </el-form-item>
         <el-form-item>
-          <kt-button icon="fa fa-plus" :label="$t('action.add')" perms="sys:config:add" type="primary" @click="handleAdd"/>
+          <kt-button icon="fa fa-plus" :label="$t('action.add')" perms="sys:dict:add" type="primary" @click="handleAdd"/>
         </el-form-item>
       </el-form>
     </div>
     <!--表格内容栏-->
-    <kt-table permsEdit="sys:config:edit" permsDelete="sys:config:delete"
+    <kt-table permsEdit="sys:dict:edit" permsDelete="sys:dict:delete"
               :data="pageResult" :columns="columns"
               @findPage="findPage" @handleEdit="handleEdit" @handleDelete="handleDelete">
     </kt-table>
@@ -53,9 +53,9 @@
 </template>
 
 <script>
-import { format } from '../../utils/datetime'
 import KtTable from '../Core/KtTable'
 import KtButton from '../Core/KtButton'
+import { format } from '../../utils/datetime'
 
 export default {
   components: {
@@ -78,8 +78,8 @@ export default {
         { prop: 'remarks', label: '备注', minWidth: 120 },
         { prop: 'createBy', label: '创建人', minWidth: 100 },
         { prop: 'createTime', label: '创建时间', minWidth: 120, formatter: this.dateFormat }
-        // {prop:"lastUpdateBy", label:"更新人", minWidth:100},
-        // {prop:"lastUpdateTime", label:"更新时间", minWidth:120, formatter:this.dateFormat}
+        // { prop: 'lastUpdateBy', label: '更新人', minWidth: 100 },
+        // { prop: 'lastUpdateTime', label: '更新时间', minWidth: 120, formatter: this.dateFormat }
       ],
       pageRequest: { pageNum: 1, pageSize: 10 },
       pageResult: {},
@@ -111,13 +111,13 @@ export default {
         this.pageRequest = data.pageRequest
       }
       this.pageRequest.params = [{ name: 'label', value: this.filters.label }]
-      this.$api.config.findPage(this.pageRequest).then((res) => {
+      this.$api.dict.findPage(this.pageRequest).then((res) => {
         this.pageResult = res.data
       }).then(data != null ? data.callback : '')
     },
     // 批量删除
     handleDelete: function (data) {
-      this.$api.config.batchDelete(data.params).then(data != null ? data.callback : '')
+      this.$api.dict.batchDelete(data.params).then(data != null ? data.callback : '')
     },
     // 显示新增界面
     handleAdd: function () {
@@ -146,7 +146,7 @@ export default {
           this.$confirm('确认提交吗？', '提示', {}).then(() => {
             this.editLoading = true
             let params = Object.assign({}, this.dataForm)
-            this.$api.config.save(params).then((res) => {
+            this.$api.dict.save(params).then((res) => {
               if (res.code === 200) {
                 this.$message({ message: '操作成功', type: 'success' })
               } else {

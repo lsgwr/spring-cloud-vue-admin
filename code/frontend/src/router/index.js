@@ -6,6 +6,7 @@ import Login from '../views/Login'
 import store from '../store'
 import api from '../http/api'
 import Introduction from '../components/Core/Introduction'
+import { getIFramePath, getIFrameUrl } from '../utils/iframe'
 
 Vue.use(VueRouter)
 
@@ -81,6 +82,8 @@ router.beforeEach((to, from, next) => {
  * 动态加载路由和菜单
  */
 function addDynamicMenuAndRoutes (userName, to, from) {
+  // 处理IFrame嵌套页面
+  handleIFrameUrl(to.path)
   if (store.state.app.menuRouteLoaded) {
     // 如果路由已经存在就不重复加载了
     console.log('动态路由和菜单已经存在！')
@@ -110,6 +113,23 @@ function addDynamicMenuAndRoutes (userName, to, from) {
 }
 
 /**
+ * 处理IFrame嵌套页面
+ */
+function handleIFrameUrl (path) {
+  // 嵌套页面，保存iframeUrl到store，供IFrame组件读取展示
+  let url = path
+  let length = store.state.iframe.iframeUrls.length
+  for (let i = 0; i < length; i++) {
+    let iframe = store.state.iframe.iframeUrls[i]
+    if (path != null && path.endsWith(iframe.path)) {
+      url = iframe.url
+      store.commit('setIFrameUrl', url)
+      break
+    }
+  }
+}
+
+/**
  * 添加动态(菜单)路由
  * @param {*} menuList 菜单列表
  * @param {*} routes 递归创建的动态(菜单)路由
@@ -131,17 +151,28 @@ function addDynamicRoutes (menuList = [], routes = []) {
           index: menuList[i].id
         }
       }
-      try {
-        // 根据菜单URL动态加载vue组件，这里要求vue组件须按照url路径存储
-        // 如url="sys/user"，则组件路径应是"@/components/sys/user.vue",否则组件加载不到,@标识src所在的路径
-        let array = menuList[i].url.split('/')
-        let url = ''
-        for (let i = 0; i < array.length; i++) {
-          url += array[i].substring(0, 1).toUpperCase() + array[i].substring(1) + '/'
+      let path = getIFramePath(menuList[i].url)
+      if (path) {
+        // 如果是嵌套页面, 通过iframe展示
+        route['path'] = path
+        route['component'] = resolve => require([`@/components/Core/IFrame`], resolve)
+        // 存储嵌套页面路由路径和访问URL
+        let url = getIFrameUrl(menuList[i].url)
+        let iFrameUrl = { 'path': path, 'url': url }
+        store.commit('addIFrameUrl', iFrameUrl)
+      } else {
+        try {
+          // 根据菜单URL动态加载vue组件，这里要求vue组件须按照url路径存储
+          // 如url="sys/user"，则组件路径应是"@/components/sys/user.vue",否则组件加载不到,@标识src所在的路径
+          let array = menuList[i].url.split('/')
+          let url = ''
+          for (let i = 0; i < array.length; i++) {
+            url += array[i].substring(0, 1).toUpperCase() + array[i].substring(1) + '/'
+          }
+          url = url.substring(0, url.length - 1)
+          route['component'] = resolve => require([`@/components/${url}`], resolve)
+        } catch (e) {
         }
-        url = url.substring(0, url.length - 1)
-        route['component'] = resolve => require([`@/components/${url}`], resolve)
-      } catch (e) {
       }
       routes.push(route)
     }

@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { getIFramePath } from '../../utils/iframe'
+
 export default {
   name: 'MenuTree',
   props: {
@@ -25,8 +27,13 @@ export default {
   },
   methods: {
     handleRoute (menu) {
+      // 如果是嵌套页面。转换为iframe的path
+      let path = getIFramePath(menu.url)
+      if (!path) { // iframe的路由没有，说明是普通路由
+        path = menu.url
+      }
       // 通过菜单URL跳转至指定路由
-      this.$router.push('/' + menu.url)
+      this.$router.push('/' + path)
     }
   }
 }

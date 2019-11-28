@@ -63,6 +63,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/actuator/**").permitAll()
                 // 其他所有请求都需要身份验证
                 .anyRequest().authenticated();
+        // 允许iframe嵌套
+        http.headers().frameOptions().disable();
         // 退出登录处理器
         http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
         // token验证过滤器

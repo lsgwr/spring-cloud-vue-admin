@@ -8,6 +8,7 @@ package com.huawei.l00379880.admin.controller;
 
 import com.huawei.l00379880.admin.constant.SysConstants;
 import com.huawei.l00379880.admin.model.SysUser;
+import com.huawei.l00379880.admin.security.SecurityUtils;
 import com.huawei.l00379880.admin.service.SysUserService;
 import com.huawei.l00379880.common.utils.FileUtils;
 import com.huawei.l00379880.common.utils.PasswordUtils;
@@ -118,4 +119,20 @@ public class SysUserController {
         return HttpResult.ok(sysUserService.findPage(pageRequest));
     }
 
+    @PreAuthorize("hasAuthority('sys:user:edit')")
+    @GetMapping(value="/updatePassword")
+    public HttpResult updatePassword(@RequestParam String password, @RequestParam String newPassword) {
+        SysUser user = sysUserService.findByName(SecurityUtils.getUsername());
+        if(user == null) {
+            HttpResult.error("用户不存在!");
+        }
+        if(SysConstants.ADMIN.equalsIgnoreCase(user.getName())) {
+            return HttpResult.error("超级管理员不允许修改!");
+        }
+        if(!PasswordUtils.matches(user.getSalt(), password, user.getPassword())) {
+            return HttpResult.error("原密码不正确!");
+        }
+        user.setPassword(PasswordUtils.encode(newPassword, user.getSalt()));
+        return HttpResult.ok(sysUserService.save(user));
+    }
 }

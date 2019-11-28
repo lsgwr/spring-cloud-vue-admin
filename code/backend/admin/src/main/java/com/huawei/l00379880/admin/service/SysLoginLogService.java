@@ -10,4 +10,12 @@ import com.huawei.l00379880.admin.model.SysLoginLog;
 import com.huawei.l00379880.core.service.CurdService;
 
 public interface SysLoginLogService extends CurdService<SysLoginLog> {
+    /**
+     * 记录登录日志
+     *
+     * @param username 登录用户名
+     * @param ipAddr   登录者的ip
+     * @return 执行成功与否的错误码
+     */
+    int writeLoginLog(String username, String ipAddr);
 }

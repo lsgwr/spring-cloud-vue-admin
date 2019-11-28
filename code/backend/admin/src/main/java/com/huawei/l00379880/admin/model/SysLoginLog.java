@@ -12,6 +12,11 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class SysLoginLog extends BaseModel {
+
+    public static final String STATUS_LOGIN = "login";
+    public static final String STATUS_LOGOUT = "logout";
+    public static final String STATUS_ONLINE = "online";
+
     /**
      * 用户名
      */

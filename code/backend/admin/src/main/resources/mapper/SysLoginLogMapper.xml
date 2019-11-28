@@ -39,6 +39,13 @@
         from sys_login_log
         where status like #{pattern}
     </select>
+    <select id="findByUserNameAndStatus" resultType="com.huawei.l00379880.admin.model.SysLoginLog" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_login_log
+        where user_name = #{userName,jdbcType=VARCHAR}
+        and status = #{status,jdbcType=VARCHAR}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
         from sys_login_log

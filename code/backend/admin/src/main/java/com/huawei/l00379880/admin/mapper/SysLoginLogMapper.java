@@ -35,4 +35,12 @@ public interface SysLoginLogMapper extends MyBatisBaseDao<SysLoginLog, Long> {
      * @return 登录日志的分页列表
      */
     List<SysLoginLog> findPageByStatus(@Param("status") String status);
+
+    /**
+     * 根据用户名和
+     * @param userName
+     * @param status
+     * @return
+     */
+    List<SysLoginLog> findByUserNameAndStatus(@Param("userName") String userName, @Param("status") String status);
 }

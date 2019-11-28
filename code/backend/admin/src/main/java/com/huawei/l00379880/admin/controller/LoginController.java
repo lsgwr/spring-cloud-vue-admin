@@ -11,7 +11,9 @@ import com.google.code.kaptcha.Producer;
 import com.huawei.l00379880.admin.model.SysUser;
 import com.huawei.l00379880.admin.security.JwtAuthenticationToken;
 import com.huawei.l00379880.admin.security.SecurityUtils;
+import com.huawei.l00379880.admin.service.SysLoginLogService;
 import com.huawei.l00379880.admin.service.SysUserService;
+import com.huawei.l00379880.admin.utils.IPUtils;
 import com.huawei.l00379880.admin.vo.LoginBean;
 import com.huawei.l00379880.common.utils.IOUtils;
 import com.huawei.l00379880.common.utils.PasswordUtils;
@@ -40,6 +42,9 @@ public class LoginController {
 
     @Autowired
     private SysUserService sysUserService;
+
+    @Autowired
+    private SysLoginLogService sysLoginLogService;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -86,6 +91,8 @@ public class LoginController {
         }
         // 系统登录认证
         JwtAuthenticationToken token = SecurityUtils.login(request, username, password, authenticationManager);
+        // 记录登录日志
+        sysLoginLogService.writeLoginLog(username, IPUtils.getIpAddr(request));
         return HttpResult.ok(token);
     }
 }

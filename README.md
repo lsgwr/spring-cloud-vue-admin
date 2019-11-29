@@ -63,4 +63,4 @@
 + [Spring Cloud](https://spring.io/projects/spring-cloud)
 + [Vue](https://cn.vuejs.org)
 + [Element](https://element.eleme.cn/#/zh-CN)
-+ [Spring Boot+Spring Cloud+Vue+Element项目实战 by 徐立健](https://item.jd.com/12624380.html)
++ [《Spring Boot+Spring Cloud+Vue+Element项目实战》](https://item.jd.com/12624380.html)

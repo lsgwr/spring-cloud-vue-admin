@@ -4,7 +4,9 @@
 
 ## 简介
 
-基于 Spring Boot、Spring Cloud、Vue、ElementUI的权限管理系统
+基于Spring Cloud和Vue最近版本的权限管理系统，预览地址
+
+![菜单介绍](images/home.png)
 
 ## 功能
 
@@ -34,7 +36,7 @@
 ### 前端
 
 + IDE : WebStorm 2019.2
-+ Webpack：webpack 3.2.x。
++ Webpack：webpack 3.2.x
 + NODE: Node 10.16.x
 + NPM : NPM 6.9.0
 
@@ -42,11 +44,11 @@
 
 ### 后端
 
-+ 核心框架：Spring Boot 2.1.4
-+ 服务治理：Spring Cloud。
-+ 持久层框架：MyBatis 3.x
-+ 数据库连接池：Druid 1.10
-+ 安全框架：Spring Security + JWT
++ 核心框架：Spring Boot 2.1.1.RELEASE
++ 服务治理：Spring Cloud Finchley.RELEASE
++ 持久层框架：MyBatis 3.4.6
++ 数据库连接池：Druid 1.1.10
++ 安全框架：Spring Security 5.1.2 + JWT 0.9.1
 + 接口文档：Swagger 2.9.2
 
 ### 前端
@@ -58,3 +60,8 @@
 + 脚手架：Vue Cli: 4.0.5
 + 图标库：FontAwesome 4.0.x
 
+## 参考资料
+
++ [Vue](https://cn.vuejs.org)
++ [Element](https://element.eleme.cn/#/zh-CN)
++ 

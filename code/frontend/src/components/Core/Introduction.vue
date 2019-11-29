@@ -4,46 +4,43 @@
       <el-carousel-item class="carousel-item-intro">
         <h2>项目介绍</h2>
         <ul>
-          <li>基于 Spring Boot、Spring Cloud、Vue、Element 的 Java EE 快速开发平台</li>
-          <li>旨在提供一套简洁易用的解决方案，帮助用户有效降低项目开发难度和成本</li>
-          <li>博客提供项目开发过程同步系列教程文章，手把手的教你如何开发同类系统</li>
+          <li>基于Spring Cloud和Vue最近版本的权限管理系统</li>
+          <li>Spring Security+JWT+Swagger+Vue+ElementUI最新版</li>
         </ul>
         <div><img src="@/assets/logo.png" style="width:120px;height:120px;padding-top:15px;"/></div>
       </el-carousel-item>
       <el-carousel-item class="carousel-item-func">
-        <h2>功能计划</h2>
+        <h2>功能计划(✔ 表示已完成，✘表示正在开发中)</h2>
         <ul>
-          <li>✔ 系统登录：系统用户登录，系统登录认证（token方式）</li>
+          <li>✔ 系统登录：系统用户登录，系统登录认证（jwt token方式）</li>
           <li>✔ 用户管理：新建用户，修改用户，删除用户，查询用户</li>
           <li>✔ 机构管理：新建机构，修改机构，删除机构，查询机构</li>
           <li>✔ 角色管理：新建角色，修改角色，删除角色，查询角色</li>
           <li>✔ 菜单管理：新建菜单，修改菜单，删除菜单，查询菜单</li>
           <li>✔ 系统日志：记录用户操作日志，查看系统执行日志记录</li>
           <li>✔ 数据监控：定制Druid信息，提供简洁有效的SQL监控</li>
-          <li>✔ 聚合文档：定制在线文档，提供简洁美观的API文档</li>
-          <li>✔ 备份还原：系统备份还原，一键恢复系统初始化数据</li>
+          <li>✔ 聚合文档：Swagger在线文档，提供简洁美观的API文档</li>
           <li>✔ 主题切换：支持主题切换，自定主题颜色，一键换肤</li>
-          <li>✔ 服务治理：集成Spring Cloud，实现全方位服务治理</li>
-          <li>✔ 服务监控：集成Spring Boot Admin，实现微服务监控</li>
-          <li>...</li>
+          <li>✘ 服务治理：集成Spring Cloud，实现全方位服务治理</li>
+          <li>✘ 服务监控：集成Spring Boot Admin，实现微服务监控</li>
+          <li>......</li>
         </ul>
       </el-carousel-item>
       <el-carousel-item class="carousel-item-env">
-        <h2>开发环境</h2>
-        <ul>
-          <li>IDE : eclipse 4.6.x。 JDK : JDK 1.8.x。</li>
-          <li>Maven : Maven 3.5.x。 MySQL: MySQL 5.7.x。</li>
-          <li>IDE : VS Code 1.27。 Webpack：webpack 3.2.x。</li>
-          <li>NODE: Node 8.9.x。 NPM : NPM 6.4.x。</li>
-        </ul>
         <h2>技术选型</h2>
         <ul>
-          <li>核心框架：Spring Boot 2.x。 服务治理：Spring Cloud。</li>
-          <li>视图框架：Spring MVC 5.x。 持久层框架：MyBatis 3.x。</li>
-          <li>数据库连接池：Druid 1.x。 安全框架：Shiro 1.4.x。</li>
-          <li>前端框架：Vue.js 2.x。 页面组件：Element 2.x。</li>
-          <li>状态管理：Vuex.js 2.x。 后台交互：axios 0.18.x。</li>
-          <li>...</li>
+          <li>服务开发和治理：Spring Boot 2.1.1.RELEASE + Spring Cloud Finchley.RELEASE</li>
+          <li>数据库操作与监控：MyBatis 3.4.6 + Druid 1.1.10</li>
+          <li>安全框架：Spring Security 5.1.2 + JWT 0.9.1</li>
+          <li>接口文档：Swagger 2.9.2</li>
+        </ul>
+        <ul>
+          <li>前端框架：Vue.js 2.6.10</li>
+          <li>UI库：ElementUI 2.13.0</li>
+          <li>状态和路由管理：Vuex 3.0.1 + Vue Router 3.1.3</li>
+          <li>脚手架：Vue Cli 4.0.5</li>
+          <li>后台交互：axios 0.19.0</li>
+          <li>......</li>
         </ul>
       </el-carousel-item>
     </el-carousel>

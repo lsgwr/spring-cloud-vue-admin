@@ -1,6 +1,6 @@
 # spring-cloud-vue-admin
 
-基于Spring Cloud和Vue最近版本的权限管理系统，预览地址
+基于Spring Cloud和Vue最近版本的权限管理系统，预览地址：http://129.211.88.191:7777
 
 ![菜单介绍](images/home.png)
 

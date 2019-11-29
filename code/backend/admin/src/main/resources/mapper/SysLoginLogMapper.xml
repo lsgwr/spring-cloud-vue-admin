@@ -46,6 +46,16 @@
         where user_name = #{userName,jdbcType=VARCHAR}
         and status = #{status,jdbcType=VARCHAR}
     </select>
+    <select id="findPageByUserNameAndStatus" resultType="com.huawei.l00379880.admin.model.SysLoginLog" parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+        <bind name="userNamePattern" value="'%' + _parameter.userName + '%'"/>
+        <bind name="statusPattern" value="'%' + _parameter.status + '%'"/>
+        select
+        <include refid="Base_Column_List"/>
+        from sys_login_log
+        where user_name like #{userNamePattern}
+        and status like #{statusPattern}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete
         from sys_login_log

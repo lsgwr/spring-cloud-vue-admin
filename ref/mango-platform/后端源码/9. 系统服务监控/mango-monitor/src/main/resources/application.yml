@@ -1,5 +1,0 @@
-server:
-  port: 8000
-spring:
-  application:
-    name: mango-monitor

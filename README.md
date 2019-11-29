@@ -1,9 +1,5 @@
 # spring-cloud-vue-admin
 
-基于SpringCloud和Vue的权限管理系统
-
-## 简介
-
 基于Spring Cloud和Vue最近版本的权限管理系统，预览地址
 
 ![菜单介绍](images/home.png)
@@ -29,15 +25,15 @@
 ### 后端
 
 + IDE : IDEA2019.2
-+ JDK : JDK 1.8.x。
++ JDK : JDK 1.8.0_212
 + Maven : Maven 3.6.2
-+ MySQL: MySQL 5.7.15。
++ MySQL: MySQL 5.7.15
 
 ### 前端
 
-+ IDE : WebStorm 2019.2
-+ Webpack：webpack 3.2.x
-+ NODE: Node 10.16.x
++ IDE : WebStorm 2019.2.4
++ Webpack：webpack 4.41.2
++ NODE: Node 10.16.3
 + NPM : NPM 6.9.0
 
 ## 技术选型
@@ -53,15 +49,18 @@
 
 ### 前端
 
-+ 前端框架：Vue.js 2.x
-+ 页面库：Element 2.x
-+ 状态管理：Vuex.js 2.x
-+ 后台交互：axios 0.18.x
-+ 脚手架：Vue Cli: 4.0.5
-+ 图标库：FontAwesome 4.0.x
++ 前端框架：Vue.js 2.6.10
++ 页面库：Element 2.13.0
++ 状态管理：Vuex 3.0.1
++ 路由管理：Vue Router 3.1.3
++ 后台交互：axios 0.19.0
++ 脚手架：Vue Cli 4.0.5
++ 图标库：FontAwesome 4.7.0
++ 国际化：i18n 8.15.0
 
 ## 参考资料
 
++ [Spring Cloud](https://spring.io/projects/spring-cloud)
 + [Vue](https://cn.vuejs.org)
 + [Element](https://element.eleme.cn/#/zh-CN)
-+ 
++ [Spring Boot+Spring Cloud+Vue+Element项目实战 by 徐立健](https://item.jd.com/12624380.html)
